@@ -31,5 +31,12 @@ pipeline  {
                 sh "find BackEnd/Amazon-clone/ -type f -exec sed  -i 's#Server=20.240.61.200#Server=20.172.67.23#g' {} +"
              }
          }
+        stage ("Remove all containers and images"){
+             steps{
+               sh'''#!/bin/sh 
+            bash delete.sh -y
+'''
+             }
+        }
     }
 }
